@@ -1,0 +1,26 @@
+services:
+  node:
+    container_name: pets_node
+    restart: unless-stopped
+    build:
+      context: .
+    env_file:
+      - ./envs/postgres.env
+    volumes:
+      - ./:/usr/src/app/
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: pets_postgres
+    image: postgres:16.3
+    restart: unless-stopped
+    volumes:
+      - database:/var/lib/postgresql/data/
+    env_file:
+      - ./envs/postgres.env
+
+volumes:
+  database:
