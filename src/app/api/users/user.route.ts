@@ -2,7 +2,7 @@ import { FastifyInstance, FastifyPluginAsync, FastifyPluginOptions } from "fasti
 import { UserController }  from "./user.controller";
 
 
-export const UserRoute: FastifyPluginAsync = async (server: FastifyInstance, options: FastifyPluginOptions) => {
+export function userRoute(server: FastifyInstance) {
     const userControler = new UserController()
 
     server.post('/', userControler.create)

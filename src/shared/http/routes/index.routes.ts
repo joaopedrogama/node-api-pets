@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyPluginOptions } from "fastify";
 
-import { UserRoute } from "../../../app/api/users/user.route";
+import { userRoute } from "../../../app/api/users/user.route";
 
-export const IndexRoute = async (server: FastifyInstance, options: FastifyPluginOptions) => {
-    server.register(UserRoute, {prefix: '/users'})
-};
+export function indexRoute(server: FastifyInstance) {
+    server.register(userRoute, {prefix: '/users'})
+}
