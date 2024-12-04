@@ -24,4 +24,12 @@ export default class UserRepository {
     findById(id: string) {
         return this.ormRepository.findOneBy({ id })
     }
+
+    find(filter: any) {
+        return this.ormRepository.findBy(filter)
+    }
+
+    findOne(filter: any) {
+        return this.ormRepository.findOneBy(filter)
+    }
 }

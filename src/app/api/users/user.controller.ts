@@ -25,9 +25,9 @@ class UserController {
         }
     };
 
-    login = async (request: FastifyRequest, reply: FastifyReply) => {
+    login = async (request: FastifyRequest<{ Body: UserDTO }>, reply: FastifyReply) => {
         try {
-            reply.send("login user");
+            return await this.service.login(request.body.email, request.body.password);
         } catch (error) {
             console.log(error);
         }

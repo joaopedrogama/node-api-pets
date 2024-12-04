@@ -22,4 +22,17 @@ export default class UserService {
         return { userCreated, token }
     }
 
+    async login(email: string, password: string) {
+        const user = await this.repository.findOne({
+            email: email
+        }).catch((err) => {
+            return Error(err)
+        })
+
+        if (user) {
+            const token = jwt.sign({ user }, process.env.SECRET_KEY || 'jvns', { expiresIn: '1d' });
+            return { user, token }
+        }
+    }
+
 }
