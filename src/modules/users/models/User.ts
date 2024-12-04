@@ -11,8 +11,16 @@ export class User {
     @Column()
     last_name: string
 
-    constructor(first_name: string, last_name: string) {
+    @Column()
+    email: string
+
+    @Column()
+    password: string
+
+    constructor(first_name: string, last_name: string, email: string, password: string) {
         this.first_name = first_name
         this.last_name = last_name
+        this.email = email
+        this.password = password
     }
 }

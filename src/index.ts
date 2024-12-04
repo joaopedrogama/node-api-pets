@@ -1,16 +1,19 @@
 import "reflect-metadata"
 import fastify from 'fastify'
 
+import { IndexRoute } from "./shared/http/routes/index.routes"
+
+
 const server = fastify()
 
-server.get('/ping', async (request, reply) => {
-  return 'pong\n'
-})
+// Register routes
+server.register(IndexRoute, {prefix: '/api'})
 
+// Start server
 server.listen({ host: '0.0.0.0', port: 3000 }, (err, address) => {
   if (err) {
     console.error(err)
     process.exit(1)
   }
-  console.log(`Server listening at ${address}`)
+  console.log(`🚀 Server started at ${address}`)
 })
