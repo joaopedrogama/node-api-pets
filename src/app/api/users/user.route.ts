@@ -1,6 +1,5 @@
 import { FastifyInstance, FastifyPluginAsync, FastifyPluginOptions } from "fastify";
-import UserController  from "./user.controller";
-import passport from "passport";
+import { UserController }  from "./user.controller";
 
 
 export const UserRoute: FastifyPluginAsync = async (server: FastifyInstance, options: FastifyPluginOptions) => {

@@ -2,7 +2,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import UserService from "./user.service";
 import { UserDTO } from "./user.dto";
 
-class UserController {
+export class UserController {
     private service: UserService;
 
     constructor() {
@@ -29,9 +29,7 @@ class UserController {
         try {
             return await this.service.login(request.body.email, request.body.password);
         } catch (error) {
-            console.log(error);
+            reply.send(error);
         }
     };
 }
-
-export default UserController;
